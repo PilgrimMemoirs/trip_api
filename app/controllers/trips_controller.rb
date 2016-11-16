@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   def index
     trips = Trip.all
 
-    render :json => trips.as_json(:excpet => [:created_at, :updated_at]), :status => :ok
+    render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
   end
 
   def show
@@ -12,7 +12,7 @@ class TripsController < ApplicationController
     trips = Trip.where(continent: params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:except => [:created_at, :updated_at]), :status => :ok
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
     else
       render :json => [], :status => :no_content
     end
@@ -24,7 +24,7 @@ class TripsController < ApplicationController
     trips = Trip.where(weeks: weeks)
 
     unless trips.empty?
-      render :json => trips.as_json(:except => [:created_at, :updated_at]), :status => :ok
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
     else
       render :json => [], :status => :no_content
     end

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'trips/category', to: 'trips#category', as: 'trips_category'
   get 'trips/search', to: 'trips#search', as: 'trips_search'
 
+  # Add functionality to at least create
   resources :trips, except: [:destroy, :create]
 end
