@@ -17,5 +17,5 @@ Trip API™
   - **Reserve a Spot on a Trip:**
     - https://trektravel.herokuapp.com/1/reserve
     - params: name, age, email
-  - ** Add a New Trip: **
+  - **Add a New Trip:**
     
