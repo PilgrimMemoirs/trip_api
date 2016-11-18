@@ -1,24 +1,24 @@
-# README
+# Trip API™
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Trip API™ 
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## Retrieve Data
+  - **Retrieve Data all Trips:** https://trektravel.herokuapp.com/trips
+  - **Retrieve Data on Single Trip From ID:** https://trektravel.herokuapp.com/1
+  - **Retrieve Data on all trips by continent:** https://trektravel.herokuapp.com/trips/continent?query=Asia
+  - **Retrieve Data on all trips by max amount of weeks:** https://trektravel.herokuapp.com/trips/weeks?query=3
+  - **Retrieve Data on all trips by max budget:** https://trektravel.herokuapp.com/trips/budget?query=5000
+    - budget is in dollar amount, above represents $5,000
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Send Data
+  - **Reserve a Spot on a Trip:**
+    - https://trektravel.herokuapp.com/trips/1/reserve
+    - accepted params: name, age, email
+  - **Add a New Trip:**
+    - https://trektravel.herokuapp.com/trips/new
+    - accepted params: 
+    
