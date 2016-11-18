@@ -37,7 +37,7 @@ class TripsController < ApplicationController
     trips = Trip.where("cost <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent, :cost]), :status => :ok
     else
       render :json => [], :status => :no_content
     end
