@@ -6,6 +6,9 @@ class TripsController < ApplicationController
   end
 
   def show
+    trip = Trip.find_by(id: params[:id])
+
+    render :json => trip, status => :okay
   end
 
   def continent
@@ -19,9 +22,8 @@ class TripsController < ApplicationController
   end
 
 
-  def search
-    weeks = params[:weeks].to_i
-    trips = Trip.where(weeks: weeks)
+  def weeks
+    trips = Trip.where("weeks <= ?", params[:query])
 
     unless trips.empty?
       render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
@@ -29,4 +31,16 @@ class TripsController < ApplicationController
       render :json => [], :status => :no_content
     end
   end
+
+#Show all budgets that are less than amount input
+  def budget
+    trips = Trip.where("cost <= ?", params[:query])
+
+    unless trips.empty?
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
+    else
+      render :json => [], :status => :no_content
+    end
+  end
+
 end
