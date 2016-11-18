@@ -2,22 +2,29 @@ class TripsController < ApplicationController
   def index
     trips = Trip.all
 
-    render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
+    render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+    :callback => params['callback'],
+    :status => :ok
+
+
   end
 
   def show
     trip = Trip.find_by(id: params[:id])
 
-    render :json => trip, status => :okay
+    render :json => trip, :callback => params['callback'], status => :okay
   end
 
   def continent
     trips = Trip.where(continent: params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+      :callback => params['callback'],
+      :status => :ok
     else
-      render :json => [], :status => :no_content
+      render :json => [],
+      :callback => params['callback'], :status => :no_content
     end
   end
 
@@ -26,9 +33,13 @@ class TripsController < ApplicationController
     trips = Trip.where("weeks <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]), :status => :ok
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+      :callback => params['callback'],
+      :status => :ok
     else
-      render :json => [], :status => :no_content
+      render :json => [],
+      :callback => params['callback'],
+      :status => :no_content
     end
   end
 
@@ -37,9 +48,13 @@ class TripsController < ApplicationController
     trips = Trip.where("cost <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent, :cost]), :status => :ok
+      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent, :cost]),
+      :callback => params['callback'],
+      :status => :ok
     else
-      render :json => [], :status => :no_content
+      render :json => [],
+      :callback => params['callback'],
+      :status => :no_content
     end
   end
 
