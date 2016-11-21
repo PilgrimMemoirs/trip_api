@@ -6,7 +6,7 @@ Trip API™
 
 ## Retrieve Data
   - **Retrieve Data all Trips:** https://trektravel.herokuapp.com/trips
-  - **Retrieve Data on Single Trip From ID:** https://trektravel.herokuapp.com/1
+  - **Retrieve Data on Single Trip From ID:** https://trektravel.herokuapp.com/trips/1
   - **Retrieve Data on all trips by continent:** https://trektravel.herokuapp.com/trips/continent?query=Asia
   - **Retrieve Data on all trips by max amount of weeks:** https://trektravel.herokuapp.com/trips/weeks?query=3
   - **Retrieve Data on all trips by max budget:** https://trektravel.herokuapp.com/trips/budget?query=5000
