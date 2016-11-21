@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'trips/category', to: 'trips#category', as: 'trips_category'
   get 'trips/search', to: 'trips#search', as: 'trips_search'
 
+  put 'trips/:id/reserve', to: 'trips#reserve'
+
   # Add functionality to at least create
-  resources :trips, except: [:destroy, :create]
+  resources :trips, except: [:destroy, :update]
 end

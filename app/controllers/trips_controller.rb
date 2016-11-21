@@ -5,9 +5,29 @@ class TripsController < ApplicationController
     render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
     :callback => params['callback'],
     :status => :ok
+  end
 
+  def create
 
   end
+
+  def reserve
+    trip = Trip.find_by(id: params[:id])
+
+  end
+
+  def dibs
+  pet = Pet.find(params[:id])
+  unless pet.owner
+    pet.owner = params[:owner]
+    if pet.save
+      render :json => pet.to_json, :callback => params['callback'],
+    :status => :ok
+    end
+  else
+    render :json => [], :callback => params['callback'], :status => :no_content
+  end
+end
 
   def show
     trip = Trip.find_by(id: params[:id])
