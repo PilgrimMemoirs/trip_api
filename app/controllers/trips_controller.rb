@@ -8,26 +8,57 @@ class TripsController < ApplicationController
   end
 
   def create
+    trip.new(
+      name: params[:name],
+      destination: params[:destination],
+      continent: params[:continent],
+      about: params[:about],
+      category: params[:category],
+      weeks: params[:weeks],
+      cost: params[:cost],
+      available: params[:available],
+      expires: params[:expires]
+    )
 
+    if trip.save
+      render :json => trip.to_json, :callback => params['callback'],
+    :status => :ok
+    else
+      render :json => [], :callback => params['callback'], :status => :no_content
+    end
   end
 
   def reserve
     trip = Trip.find_by(id: params[:id])
 
+    if trip.available > 0
+      reservation = TripReservation.new(
+        name: params[:name],
+        email: params[:email],
+        age: params[:age],
+        trip_id: trip.id
+        )
+
+        if reservation.save
+          trip.sold += 1
+          trip.available -= 1
+          trip.save
+          render :json => trip.to_json, :callback => params['callback'],
+        :status => :ok
+        else
+          render :json => [], :callback => params['callback'], :status => :no_content
+        end
+      end
   end
 
-  def dibs
-  pet = Pet.find(params[:id])
-  unless pet.owner
-    pet.owner = params[:owner]
-    if pet.save
-      render :json => pet.to_json, :callback => params['callback'],
+  def reservations
+    trip = Trip.find_by(id: params[:id])
+    reservations = trip.trip_reservations
+
+    render :json => reservations.as_json,
+    :callback => params['callback'],
     :status => :ok
-    end
-  else
-    render :json => [], :callback => params['callback'], :status => :no_content
   end
-end
 
   def show
     trip = Trip.find_by(id: params[:id])
