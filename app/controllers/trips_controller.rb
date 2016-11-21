@@ -10,14 +10,12 @@ class TripsController < ApplicationController
   def create
     trip.new(
       name: params[:name],
-      destination: params[:destination],
       continent: params[:continent],
       about: params[:about],
       category: params[:category],
       weeks: params[:weeks],
       cost: params[:cost],
-      available: params[:available],
-      expires: params[:expires]
+      available: params[:available]
     )
 
     if trip.save
@@ -31,7 +29,6 @@ class TripsController < ApplicationController
   def reserve
     trip = Trip.find_by(id: params[:id])
 
-    if trip.available > 0
       reservation = TripReservation.new(
         name: params[:name],
         email: params[:email],
@@ -40,11 +37,8 @@ class TripsController < ApplicationController
         )
 
         if reservation.save
-          trip.sold += 1
-          trip.available -= 1
-          trip.save
           render :json => trip.to_json, :callback => params['callback'],
-        :status => :ok
+          :status => :ok
         else
           render :json => [], :callback => params['callback'], :status => :no_content
         end
