@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20161118175601) do
     t.integer  "trip_id"
     t.string   "name"
     t.string   "email"
-    t.integer  "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_trip_reservations_on_trip_id"
