@@ -14,8 +14,7 @@ class TripsController < ApplicationController
       about: params[:about],
       category: params[:category],
       weeks: params[:weeks],
-      cost: params[:cost],
-      available: params[:available]
+      cost: params[:cost]
     )
 
     if trip.save

@@ -24,19 +24,13 @@ ActiveRecord::Schema.define(version: 20161118175601) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "name"
-    t.string   "destination"
     t.string   "continent"
     t.text     "about"
-    t.string   "img"
     t.string   "category"
     t.integer  "weeks"
-    t.float    "original_cost"
     t.float    "cost"
-    t.integer  "available"
-    t.integer  "sold"
-    t.datetime "expires"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
