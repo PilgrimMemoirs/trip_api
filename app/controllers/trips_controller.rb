@@ -42,7 +42,6 @@ class TripsController < ApplicationController
         else
           render :json => [], :callback => params['callback'], :status => :no_content
         end
-      end
   end
 
   def reservations
