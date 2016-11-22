@@ -29,7 +29,7 @@ class TripsController < ApplicationController
   def reserve
     trip = Trip.find_by(id: params[:id])
 
-      reservation = TripReservation.new(
+    reservation = TripReservation.new(
         name: params[:name],
         email: params[:email],
         age: params[:age],
