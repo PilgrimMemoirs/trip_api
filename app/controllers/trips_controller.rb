@@ -8,7 +8,7 @@ class TripsController < ApplicationController
   end
 
   def create
-    trip.new(
+    trip = Trip.new(
       name: params[:name],
       continent: params[:continent],
       about: params[:about],
