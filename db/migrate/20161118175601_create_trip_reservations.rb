@@ -4,7 +4,6 @@ class CreateTripReservations < ActiveRecord::Migration[5.0]
       t.belongs_to :trip
       t.string :name
       t.string :email
-      t.integer :age
       t.timestamps
     end
   end

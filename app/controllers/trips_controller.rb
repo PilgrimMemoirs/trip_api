@@ -31,7 +31,6 @@ class TripsController < ApplicationController
     reservation = TripReservation.new(
         name: params[:name],
         email: params[:email],
-        age: params[:age],
         trip_id: trip.id
         )
 
