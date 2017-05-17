@@ -21,8 +21,8 @@ Trip API™
 ## Send Data
   - **Reserve a Spot on a Trip:**
     - https://trektravel.herokuapp.com/trips/1/reserve
-    - required params: name, age, email
+    - accepted params: name, age, email
 
   - **Add a New Trip:**
     - https://trektravel.herokuapp.com/trips/new
-    - required params: name, destination, continent, about, category, weeks, cost, available, expires
+    - accepted params: name, continent, about, category, weeks, cost
