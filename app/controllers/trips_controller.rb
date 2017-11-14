@@ -18,10 +18,10 @@ class TripsController < ApplicationController
     )
 
     if trip.save
-      render :json => trip.to_json, :callback => params['callback'],
+      render :json => trip.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]), :callback => params['callback'],
     :status => :ok
     else
-      render :json => [], :callback => params['callback'], :status => :no_content
+      render :json => [], :callback => params['callback'], :status => :bad_request
     end
   end
 
@@ -35,10 +35,10 @@ class TripsController < ApplicationController
         )
 
         if reservation.save
-          render :json => trip.to_json, :callback => params['callback'],
+          render :json => reservation.as_json(:only => [:name, :email, :trip_id]), :callback => params['callback'],
           :status => :ok
         else
-          render :json => [], :callback => params['callback'], :status => :no_content
+          render :json => [], :callback => params['callback'], :status => :bad_request
         end
   end
 
@@ -46,7 +46,7 @@ class TripsController < ApplicationController
     trip = Trip.find_by(id: params[:id])
     reservations = trip.trip_reservations
 
-    render :json => reservations.as_json,
+    render :json => reservations.as_json(:only => [:id, :name, :email, :trip_id]),
     :callback => params['callback'],
     :status => :ok
   end
@@ -54,7 +54,11 @@ class TripsController < ApplicationController
   def show
     trip = Trip.find_by(id: params[:id])
 
-    render :json => trip, :callback => params['callback'], status => :okay
+    if trip
+      render :json => trip.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]), :callback => params['callback'], status => :ok
+    else
+      render :json => [], :callback => params['callback'], :status => :no_content
+    end
   end
 
   def continent
