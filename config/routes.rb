@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   get 'trips/budget', to: 'trips#budget', as: 'trips_budget'
   get 'trips/weeks', to: 'trips#weeks', as: 'trips_weeks'
   get 'trips/category', to: 'trips#category', as: 'trips_category'
-  get 'trips/search', to: 'trips#search', as: 'trips_search'
 
-  post 'trips/:id/reserve', to: 'trips#reserve'
+  post 'trips/:id/reservations', to: 'trips#reserve'
 
   get 'trips/:id/reservations', to: 'trips#reservations', as: 'trips_reservations'
 
