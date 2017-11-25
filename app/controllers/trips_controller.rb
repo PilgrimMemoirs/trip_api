@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   def index
     trips = Trip.all
 
-    render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+    render :json => trips.as_json(:only => [:id, :name, :weeks, :continent, :category, :cost]),
     :callback => params['callback'],
     :status => :ok
   end
@@ -19,9 +19,13 @@ class TripsController < ApplicationController
 
     if trip.save
       render :json => trip.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]), :callback => params['callback'],
-    :status => :ok
+      :status => :ok
     else
-      render :json => [], :callback => params['callback'], :status => :bad_request
+      render(
+        :json => {errors: trip.errors.messages},
+        :callback => params['callback'],
+        :status => :bad_request
+      )
     end
   end
 
@@ -29,17 +33,21 @@ class TripsController < ApplicationController
     trip = Trip.find_by(id: params[:id])
 
     reservation = TripReservation.new(
-        name: params[:name],
-        email: params[:email],
-        trip_id: trip.id
-        )
+      name: params[:name],
+      email: params[:email],
+      trip_id: trip.id
+    )
 
-        if reservation.save
-          render :json => reservation.as_json(:only => [:name, :email, :trip_id]), :callback => params['callback'],
-          :status => :ok
-        else
-          render :json => [], :callback => params['callback'], :status => :bad_request
-        end
+    if reservation.save
+      render :json => reservation.as_json(:only => [:name, :email, :trip_id]), :callback => params['callback'],
+      :status => :ok
+    else
+      render(
+        :json => { errors: reservation.errors.messages },
+        :callback => params['callback'],
+        :status => :bad_request
+      )
+    end
   end
 
   def reservations
@@ -89,7 +97,7 @@ class TripsController < ApplicationController
     end
   end
 
-#Show all budgets that are less than amount input
+  #Show all budgets that are less than amount input
   def budget
     trips = Trip.where("cost <= ?", params[:query])
 
