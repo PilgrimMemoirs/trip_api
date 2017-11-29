@@ -20,14 +20,14 @@ Trip API™
 
 ## Send Data
   - **Reserve a Spot on a Trip:**
-    - https://ada-backtrek-api.herokuapp.com/trips/1/reservations
+    - POST https://ada-backtrek-api.herokuapp.com/trips/1/reservations
     - accepted params:
       - name (string)
       - age (integer)
       - email (string)
 
   - **Add a New Trip:**
-    - https://ada-backtrek-api.herokuapp.com/trips/new
+    - POST https://ada-backtrek-api.herokuapp.com/trips
     - accepted params:
       - name (string)
       - continent (string)
