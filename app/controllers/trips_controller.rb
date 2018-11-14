@@ -39,7 +39,7 @@ class TripsController < ApplicationController
     )
 
     if reservation.save
-      render :json => reservation.as_json(:only => [:name, :email, :trip_id]), :callback => params['callback'],
+      render :json => reservation.as_json(:only => [:id, :name, :email, :trip_id]), :callback => params['callback'],
       :status => :ok
     else
       render(
