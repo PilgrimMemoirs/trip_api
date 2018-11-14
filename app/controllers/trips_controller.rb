@@ -73,7 +73,7 @@ class TripsController < ApplicationController
     trips = Trip.where(continent: params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+      render :json => trips.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]),
       :callback => params['callback'],
       :status => :ok
     else
@@ -87,7 +87,7 @@ class TripsController < ApplicationController
     trips = Trip.where("weeks <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+      render :json => trips.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]),
       :callback => params['callback'],
       :status => :ok
     else
@@ -102,7 +102,7 @@ class TripsController < ApplicationController
     trips = Trip.where("cost <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent, :cost]),
+      render :json => trips.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]),
       :callback => params['callback'],
       :status => :ok
     else
