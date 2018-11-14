@@ -28,16 +28,16 @@ Trip API™
   - **Reserve a Spot on a Trip:**
     - `POST` https://trektravel.herokuapp.com/trips/1/reservations
     - accepted params:
-      - name (string)
+      - name (string) **required**
       - age (integer)
-      - email (string)
+      - email (string)  **required**
 
   - **Add a New Trip:**
     - `POST` https://trektravel.herokuapp.com/trips
     - accepted params:
-      - name (string)
-      - continent (string)
+      - name (string) **required**
+      - continent (string) **required**
       - about (string)
-      - category (string)
-      - weeks (integer)
-      - cost (float)
+      - category (string) **required**
+      - weeks (integer) **required**
+      - cost (float) **required**
