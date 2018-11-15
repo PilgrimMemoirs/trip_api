@@ -1,4 +1,26 @@
 class TripsController < ApplicationController
+
+  def about
+    routes = [
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/continent?query=<CONTINENT>' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/weeks?query=<NUM_WEEKS>' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/budget?query=<COST>' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/:id' },
+      { method: 'post', endpoint: 'https://trektravel.herokuapp.com/trips/:id/reservations',
+        params: ['name', 'age', 'email']
+      },
+      { method: 'post', endpoint: 'https://trektravel.herokuapp.com/trips',
+        params: ['name', 'continent', 'about', 'category', 'weeks', 'cost']
+      }
+    ]
+    render json: {
+      about: 'Welcome to the Ada Trip API.  We provide the following endpoints',
+      documentation_link: 'https://github.com/AdaGold/trip_api#readme',
+      routes: routes
+    }, status: :ok
+  end
+
   def index
     trips = Trip.all
 
@@ -39,7 +61,7 @@ class TripsController < ApplicationController
     )
 
     if reservation.save
-      render :json => reservation.as_json(:only => [:name, :email, :trip_id]), :callback => params['callback'],
+      render :json => reservation.as_json(:only => [:id, :name, :email, :trip_id]), :callback => params['callback'],
       :status => :ok
     else
       render(
@@ -73,7 +95,7 @@ class TripsController < ApplicationController
     trips = Trip.where(continent: params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+      render :json => trips.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]),
       :callback => params['callback'],
       :status => :ok
     else
@@ -87,7 +109,7 @@ class TripsController < ApplicationController
     trips = Trip.where("weeks <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent]),
+      render :json => trips.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]),
       :callback => params['callback'],
       :status => :ok
     else
@@ -102,7 +124,7 @@ class TripsController < ApplicationController
     trips = Trip.where("cost <= ?", params[:query])
 
     unless trips.empty?
-      render :json => trips.as_json(:only => [:id, :name, :weeks, :continent, :cost]),
+      render :json => trips.as_json(:only => [:id, :name, :continent, :about, :category, :weeks, :cost]),
       :callback => params['callback'],
       :status => :ok
     else
