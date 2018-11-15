@@ -1,4 +1,26 @@
 class TripsController < ApplicationController
+
+  def about
+    routes = [
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/continent?query=<CONTINENT>' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/weeks?query=<NUM_WEEKS>' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/budget?query=<COST>' },
+      { method: 'get', endpoint: 'https://trektravel.herokuapp.com/trips/:id' },
+      { method: 'post', endpoint: 'https://trektravel.herokuapp.com/trips/:id/reservations',
+        params: ['name', 'age', 'email']
+      },
+      { method: 'post', endpoint: 'https://trektravel.herokuapp.com/trips',
+        params: ['name', 'continent', 'about', 'category', 'weeks', 'cost']
+      }
+    ]
+    render json: {
+      about: 'Welcome to the Ada Trip API.  We provide the following endpoints',
+      documentation_link: 'https://github.com/AdaGold/trip_api/blob/master/README.md',
+      routes: routes
+    }, status: :ok
+  end
+
   def index
     trips = Trip.all
 
