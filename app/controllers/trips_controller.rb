@@ -16,7 +16,7 @@ class TripsController < ApplicationController
     ]
     render json: {
       about: 'Welcome to the Ada Trip API.  We provide the following endpoints',
-      documentation_link: 'https://github.com/AdaGold/trip_api/blob/master/README.md',
+      documentation_link: 'https://github.com/AdaGold/trip_api#readme',
       routes: routes
     }, status: :ok
   end
