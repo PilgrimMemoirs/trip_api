@@ -65,7 +65,7 @@ Accepted query params:
   - Must be a number
 
 ### Reserve a Ticket on a Trip package
-`post` https://trektravel.herokuapp.com/trips/1/reservations
+`post` `https://trektravel.herokuapp.com/trips/{trip id}/reservations`
 
 Accepted query params:
 - `name` (string), represents the name of the primary traveler on the trip reservation
