@@ -1,6 +1,12 @@
 # Trip API™
 
-Trip API™
+Welcome to the Trip API™™™, that services the Ada Trip Reserving Service!
+
+The Ada Trip Reserving Service does two things very well:
+  1. helps tour guides create Trip packages catered to global travelers
+  2. helps travelers find Trip packages that fit their needs, and make a reservation for that trip
+
+Read the API documentation for more details.
 
 
 
@@ -49,3 +55,7 @@ Trip API™
       - `age` (integer)
       - `email` (string)
         - Required
+
+## Note: Feel free to dive into the source code
+
+If this API documentation seems lacking, feel free to dive into the source code to find out what's going on. It's an API built in Ruby on Rails!
