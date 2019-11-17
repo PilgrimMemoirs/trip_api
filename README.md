@@ -10,10 +10,10 @@ Read the API documentation for more details.
 
 ## Actions
 
-#### Retrieve list of all Trip packages
+### Retrieve list of all Trip packages
 `get` `https://trektravel.herokuapp.com/trips`
 
-#### Retrieve list of all Trips by continent
+### Retrieve list of all Trips by continent
 `get` `https://trektravel.herokuapp.com/trips/continent?query={continent}`
 
 Accepted query params:
@@ -21,7 +21,7 @@ Accepted query params:
     - Required
     - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
 
-#### Retrieve list of all Trips by max amount of weeks
+### Retrieve list of all Trips by max amount of weeks
 `get` `https://trektravel.herokuapp.com/trips/weeks?query={weeks}`
 
 Accepted query params:
@@ -29,7 +29,7 @@ Accepted query params:
     - Required
     - Must be a number
 
-#### Retrieve list of all Trips by max budget
+### Retrieve list of all Trips by max budget
 `get` `https://trektravel.herokuapp.com/trips/budget?query={budget}`
 
 Accepted query params:
@@ -38,13 +38,13 @@ Accepted query params:
     - Must be a number
     - budget is in dollar amount, above represents $5,000
 
-#### Retrieve Data on Single Trip From ID** 
+### Retrieve Data on Single Trip From ID
 `get` `https://trektravel.herokuapp.com/trips/{id}`
 
-#### Retrieve all reservations of a Trip
+### Retrieve all reservations of a Trip
 `get` `https://trektravel.herokuapp.com/trips/{id}/reservations`
 
-#### Add a New Trip package to be listed
+### Add a New Trip package to be listed
 `post` `https://trektravel.herokuapp.com/trips`
 
 Accepted query params:
@@ -64,7 +64,7 @@ Accepted query params:
   - Required
   - Must be a number
 
-#### Reserve a Ticket on a Trip package
+### Reserve a Ticket on a Trip package
 `post` https://trektravel.herokuapp.com/trips/1/reservations
 
 Accepted query params:
