@@ -8,53 +8,72 @@ The Ada Trip Reserving Service does two things very well:
 
 Read the API documentation for more details.
 
+## Actions
 
+#### Retrieve list of all Trip packages
+`get` `https://trektravel.herokuapp.com/trips`
 
-## Retrieve Data
-  - **Retrieve list of all Trips:** 
-     - `get` `https://trektravel.herokuapp.com/trips`
-  - **Retrieve list of all trips by continent:**
-     - `get` `https://trektravel.herokuapp.com/trips/continent?query={continent}`
-  - **Retrieve list of all trips by max amount of weeks:**
-       - `get` `https://trektravel.herokuapp.com/trips/weeks?query={weeks}`
-  - **Retrieve list of all trips by max budget:** 
-       - `get` `https://trektravel.herokuapp.com/trips/budget?query={budget}`
+#### Retrieve list of all Trips by continent
+`get` `https://trektravel.herokuapp.com/trips/continent?query={continent}`
+
+Accepted query params:
+- `query` (string), represents the continent of the trip results to filter by
+    - Required
+    - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
+
+#### Retrieve list of all Trips by max amount of weeks
+`get` `https://trektravel.herokuapp.com/trips/weeks?query={weeks}`
+
+Accepted query params:
+- `query` (string), represents the max duration of the trips to filter by, in weeks
+    - Required
+    - Must be a number
+
+#### Retrieve list of all Trips by max budget
+`get` `https://trektravel.herokuapp.com/trips/budget?query={budget}`
+
+Accepted query params:
+- `query` (string), represents the max budget of the trips to filter by, in whole dollar amount
+    - Required
+    - Must be a number
     - budget is in dollar amount, above represents $5,000
-  - **Retrieve Data on Single Trip From ID:** 
-       - `get` `https://trektravel.herokuapp.com/trips/{id}`
-  - **Retrieve all reservations of a Trip:** 
-       - `get` `https://trektravel.herokuapp.com/trips/{id}/reservations`
 
+#### Retrieve Data on Single Trip From ID** 
+`get` `https://trektravel.herokuapp.com/trips/{id}`
 
+#### Retrieve all reservations of a Trip
+`get` `https://trektravel.herokuapp.com/trips/{id}/reservations`
 
-## Send Data
+#### Add a New Trip package to be listed
+`post` `https://trektravel.herokuapp.com/trips`
 
-  - **Add a New Trip:**
-    - `POST` https://trektravel.herokuapp.com/trips
-    - accepted params:
-      - `name` (string), represents the name of your trip
-        - Required
-      - `continent` (string), represents the continent that the trip takes place in
-        - Required
-        - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
-      - `about` (string), represents a description of this trip and why someone would join this trip
-      - `category` (string), represents a broad category or tag of this trip
-        - Required
-      - `weeks` (integer), represents the duration of this trip in number of weeks
-        - Required
-        - Must be a number
-      - `cost` (float), represents the cost of this trip in USD
-        - Required
-        - Must be a number
-        
-   - **Reserve a Spot on a Trip:**
-    - `POST` https://trektravel.herokuapp.com/trips/1/reservations
-    - accepted params:
-      - `name` (string)
-        - Required
-      - `age` (integer)
-      - `email` (string)
-        - Required
+Accepted query params:
+- `name` (string), represents the name of your trip
+  - Required
+- `continent` (string), represents the continent that the trip takes place in
+  - Required
+  - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
+- `about` (string), represents a description of this trip and why someone would join this trip
+  - Optional
+- `category` (string), represents a broad category or tag of this trip
+  - Required
+- `weeks` (integer), represents the duration of this trip in number of weeks
+  - Required
+  - Must be a number
+- `cost` (float), represents the cost of this trip in USD
+  - Required
+  - Must be a number
+
+#### Reserve a Ticket on a Trip package
+`post` https://trektravel.herokuapp.com/trips/1/reservations
+
+Accepted query params:
+- `name` (string), represents the name of the primary traveler on the trip reservation
+  - Required
+- `age` (integer), represents the age of the primary traveler on the trip reservation
+  - Optional
+- `email` (string), represents the contact email of the primary traveler on the trip reservation
+  - Required
 
 ## Note: Feel free to dive into the source code
 
