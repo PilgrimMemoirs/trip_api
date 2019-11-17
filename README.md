@@ -35,9 +35,17 @@ Trip API™
   - **Add a New Trip:**
     - `POST` https://trektravel.herokuapp.com/trips
     - accepted params:
-      - name (string) **required**
-      - continent (string) **required**
-      - about (string)
-      - category (string) **required**
-      - weeks (integer) **required**
-      - cost (float) **required**
+      - `name` (string), represents the name of your trip
+        - Required
+      - `continent` (string), represents the continent that the trip takes place in
+        - Required
+        - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
+      - `about` (string), represents a description of this trip and why someone would join this trip
+      - `category` (string), represents a broad category or tag of this trip
+        - Required
+      - `weeks` (integer), represents the duration of this trip in number of weeks
+        - Required
+        - Must be a number
+      - `cost` (float), represents the cost of this trip in USD
+        - Required
+        - Must be a number
