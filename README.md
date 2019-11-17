@@ -6,33 +6,22 @@ Trip API™
 
 ## Retrieve Data
   - **Retrieve list of all Trips:** 
-     - `get` https://trektravel.herokuapp.com/trips
+     - `get` `https://trektravel.herokuapp.com/trips`
   - **Retrieve list of all trips by continent:**
-     - `get` https://trektravel.herokuapp.com/trips/continent?query=Asia
+     - `get` `https://trektravel.herokuapp.com/trips/continent?query={continent}`
   - **Retrieve list of all trips by max amount of weeks:**
-       - `get` https://trektravel.herokuapp.com/trips/weeks?query=3
+       - `get` `https://trektravel.herokuapp.com/trips/weeks?query={weeks}`
   - **Retrieve list of all trips by max budget:** 
-       - `get` https://trektravel.herokuapp.com/trips/budget?query=5000
+       - `get` `https://trektravel.herokuapp.com/trips/budget?query={budget}`
     - budget is in dollar amount, above represents $5,000
-
-
   - **Retrieve Data on Single Trip From ID:** 
-       - `get` https://trektravel.herokuapp.com/trips/1
-
+       - `get` `https://trektravel.herokuapp.com/trips/{id}`
   - **Retrieve all reservations of a Trip:** 
-       - `get` https://trektravel.herokuapp.com/trips/1/reservations
+       - `get` `https://trektravel.herokuapp.com/trips/{id}/reservations`
 
 
 
 ## Send Data
-  - **Reserve a Spot on a Trip:**
-    - `POST` https://trektravel.herokuapp.com/trips/1/reservations
-    - accepted params:
-      - `name` (string)
-        - Required
-      - `age` (integer)
-      - `email` (string)
-        - Required
 
   - **Add a New Trip:**
     - `POST` https://trektravel.herokuapp.com/trips
@@ -51,3 +40,12 @@ Trip API™
       - `cost` (float), represents the cost of this trip in USD
         - Required
         - Must be a number
+        
+   - **Reserve a Spot on a Trip:**
+    - `POST` https://trektravel.herokuapp.com/trips/1/reservations
+    - accepted params:
+      - `name` (string)
+        - Required
+      - `age` (integer)
+      - `email` (string)
+        - Required
