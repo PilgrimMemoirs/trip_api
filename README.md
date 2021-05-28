@@ -19,7 +19,7 @@ Read the API documentation for more details.
 Accepted query params:
 - `query` (string), represents the continent of the trip results to filter by
     - Required
-    - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
+    - Must be one of the following values: `"Africa"`, `"Antarctica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
 
 ### Retrieve list of all Trips by max amount of weeks
 `get` `https://trektravel.herokuapp.com/trips/weeks?query={weeks}`
@@ -52,7 +52,7 @@ Accepted query params:
   - Required
 - `continent` (string), represents the continent that the trip takes place in
   - Required
-  - Must be one of the following values: `"Africa"`, `"Antartica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
+  - Must be one of the following values: `"Africa"`, `"Antarctica"`, `"Asia"`, `"Australasia"`, `"Europe"`, `"North America"`, `"South America"`
 - `about` (string), represents a description of this trip and why someone would join this trip
   - Optional
 - `category` (string), represents a broad category or tag of this trip
